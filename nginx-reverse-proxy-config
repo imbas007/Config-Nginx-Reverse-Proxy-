@@ -30,8 +30,8 @@ server {
         listen 443 ssl default_server;
         listen [::]:443 ssl default_server;
 
-        ssl_certificate /etc/letsencrypt/live/tontonx.ddns.net/fullchain.pem; # managed by Certbot
-        ssl_certificate_key /etc/letsencrypt/live/tontonx.ddns.net/privkey.pem; # managed by Certbot
+        ssl_certificate /etc/letsencrypt/live/<your domain>/fullchain.pem; # managed by Certbot
+        ssl_certificate_key /etc/letsencrypt/live/<your domain>/privkey.pem; # managed by Certbot
         ssl_session_cache shared:le_nginx_SSL:1m; # managed by Certbot
         ssl_session_timeout 1440m; # managed by Certbot
 
