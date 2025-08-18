@@ -6,15 +6,15 @@ server {
 
         index index.php index.html index.htm index.nginx-debian.html;
 
-        server_name <your domain>;
+        server_name <you domain>;
 
         location / {
                 try_files $uri $uri/ @c2;
         }
 
-	location /analytics.gif {
-	        return 200 ".";
-	}
+        location /analytics.gif {
+                return 200 ".";
+        }
         
         location @c2 {
                 proxy_pass http://<your ip redirector>;
@@ -30,8 +30,8 @@ server {
         listen 443 ssl default_server;
         listen [::]:443 ssl default_server;
 
-        ssl_certificate /etc/letsencrypt/live/<your domain>/fullchain.pem; # managed by Certbot
-        ssl_certificate_key /etc/letsencrypt/live/<your domain>/privkey.pem; # managed by Certbot
+        ssl_certificate /etc/letsencrypt/live/tontonx.ddns.net/fullchain.pem; # managed by Certbot
+        ssl_certificate_key /etc/letsencrypt/live/tontonx.ddns.net/privkey.pem; # managed by Certbot
         ssl_session_cache shared:le_nginx_SSL:1m; # managed by Certbot
         ssl_session_timeout 1440m; # managed by Certbot
 
@@ -44,18 +44,18 @@ server {
 
         index index.php index.html index.htm index.nginx-debian.html;
 
-        server_name <your domain>;
+        server_name <your ip redirector>;
 
         location / {
                 try_files $uri $uri/ @c2;
         }
 
-	location /analytics.gif {
+        location /analytics.gif {
                 return 200 ".";
-	}
+        }
 
         location @c2 {
-                proxy_pass https://<your ip redirector>;
+                proxy_pass https://<you domain>;
                 proxy_redirect off;
                 proxy_set_header Host $host;
                 proxy_set_header X-Beacon-Id $http_x_beacon_id;
