@@ -17,10 +17,10 @@ server {
         }
         
         location @c2 {
-                proxy_pass http://<your ip redirector>;
+                proxy_pass <your ip redirector>;
                 proxy_redirect off;
                 proxy_set_header Host $host;
-                proxy_set_header X-Id $http_x_beacon_id;
+                proxy_set_header X-Beacon-Id $http_x_beacon_id;
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                 proxy_set_header "User-Agent" "${http_user_agent}";            
         }
@@ -30,8 +30,8 @@ server {
         listen 443 ssl default_server;
         listen [::]:443 ssl default_server;
 
-        ssl_certificate /etc/letsencrypt/live/<your domain>/fullchain.pem; # managed by Certbot
-        ssl_certificate_key /etc/letsencrypt/live/<your domain>/privkey.pem; # managed by Certbot
+        ssl_certificate /etc/letsencrypt/live/tontonx.ddns.net/fullchain.pem; # managed by Certbot
+        ssl_certificate_key /etc/letsencrypt/live/tontonx.ddns.net/privkey.pem; # managed by Certbot
         ssl_session_cache shared:le_nginx_SSL:1m; # managed by Certbot
         ssl_session_timeout 1440m; # managed by Certbot
 
@@ -44,7 +44,7 @@ server {
 
         index index.php index.html index.htm index.nginx-debian.html;
 
-        server_name <your ip redirector>;
+        server_name <you domain>;
 
         location / {
                 try_files $uri $uri/ @c2;
@@ -63,3 +63,4 @@ server {
                 proxy_set_header "User-Agent" "${http_user_agent}";  
         }
 }
+
