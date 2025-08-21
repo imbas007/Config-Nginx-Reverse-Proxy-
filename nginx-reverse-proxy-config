@@ -20,7 +20,7 @@ server {
                 proxy_pass http://<your ip redirector>;
                 proxy_redirect off;
                 proxy_set_header Host $host;
-                proxy_set_header X-Beacon-Id $http_x_beacon_id;
+                proxy_set_header X-Id $http_x_beacon_id;
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                 proxy_set_header "User-Agent" "${http_user_agent}";            
         }
@@ -55,7 +55,7 @@ server {
         }
 
         location @c2 {
-                proxy_pass https://<you domain>;
+                proxy_pass https://<your ip redirector>;
                 proxy_redirect off;
                 proxy_set_header Host $host;
                 proxy_set_header X-Beacon-Id $http_x_beacon_id;
