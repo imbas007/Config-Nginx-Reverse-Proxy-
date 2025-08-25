@@ -17,7 +17,7 @@ server {
         }
         
         location @c2 {
-                proxy_pass <your ip redirector>;
+                proxy_pass <your ip c2 server>;
                 proxy_redirect off;
                 proxy_set_header Host $host;
                 proxy_set_header X-Beacon-Id $http_x_beacon_id;
@@ -30,8 +30,8 @@ server {
         listen 443 ssl default_server;
         listen [::]:443 ssl default_server;
 
-        ssl_certificate /etc/letsencrypt/live/tontonx.ddns.net/fullchain.pem; # managed by Certbot
-        ssl_certificate_key /etc/letsencrypt/live/tontonx.ddns.net/privkey.pem; # managed by Certbot
+        ssl_certificate /etc/letsencrypt/live/<you domain>/fullchain.pem; # managed by Certbot
+        ssl_certificate_key /etc/letsencrypt/live/<you domain>/privkey.pem; # managed by Certbot
         ssl_session_cache shared:le_nginx_SSL:1m; # managed by Certbot
         ssl_session_timeout 1440m; # managed by Certbot
 
@@ -55,7 +55,7 @@ server {
         }
 
         location @c2 {
-                proxy_pass https://<your ip redirector>;
+                proxy_pass https://<your ip c2 server>;
                 proxy_redirect off;
                 proxy_set_header Host $host;
                 proxy_set_header X-Beacon-Id $http_x_beacon_id;
